@@ -1,0 +1,817 @@
+{
+  "intents": [
+    {
+      "intent": "book_hostel_facility",
+      "examples": [
+        {
+          "text": "i want hostel"
+        },
+        {
+          "text": "i want hostel facility"
+        },
+        {
+          "text": "i want to book hostel facility"
+        },
+        {
+          "text": "i want to one hostel room"
+        },
+        {
+          "text": "i want to take hostel"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "greetings",
+      "examples": [
+        {
+          "text": "good afternoon"
+        },
+        {
+          "text": "good evening"
+        },
+        {
+          "text": "good morning"
+        },
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hi"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "query",
+      "examples": [
+        {
+          "text": "do the college have hostel facility"
+        },
+        {
+          "text": "How much is the hostel charges"
+        },
+        {
+          "text": "how old is the college"
+        },
+        {
+          "text": "Is the college NBA or NAAC accredited"
+        },
+        {
+          "text": "is there any hostel facility"
+        },
+        {
+          "text": "is there any playground in the college"
+        },
+        {
+          "text": "I want to book hostel facility"
+        },
+        {
+          "text": "what are the different branches in the college"
+        },
+        {
+          "text": "what are the different courses offered by the college"
+        },
+        {
+          "text": "What are the popular companies that come for placement drive"
+        },
+        {
+          "text": "when was the college established"
+        }
+      ],
+      "description": "cutomer asks information"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "book_hostel_bed",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "book",
+          "synonyms": [
+            "confirm",
+            "require",
+            "take",
+            "want"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "email",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "email",
+          "patterns": [
+            "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Enquiry",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "book",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "charges",
+          "synonyms": [
+            "amount",
+            "cost",
+            "expenses",
+            "fees",
+            "pay"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "companies",
+          "synonyms": [
+            "recruitment drive"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "established",
+          "synonyms": [
+            "built",
+            "created",
+            "formed",
+            "founded"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "hostel",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "NAAC",
+          "synonyms": [
+            "NBA"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "food",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "nonveg",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "veg",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "good afternoon",
+          "synonyms": [
+            "gud afternoon"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "good evening",
+          "synonyms": [
+            "gd eve",
+            "gud evening"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "good morning",
+          "synonyms": [
+            "gm",
+            "gud morning"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "hostel_charges",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "nonveg",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "veg",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "payment",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "card",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "cash",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "UPI",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_3_1601822253984",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1601822253984",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1601822480242",
+      "previous_sibling": "node_5_1601825134638"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please provide your payment method"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "cash",
+                "value": {
+                  "input": {
+                    "text": "cash"
+                  }
+                }
+              },
+              {
+                "label": "card",
+                "value": {
+                  "input": {
+                    "text": "card"
+                  }
+                }
+              },
+              {
+                "label": "upi",
+                "value": {
+                  "input": {
+                    "text": "upi"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "slot_3_1601823586289",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1601823586319",
+      "previous_sibling": "handler_9_1601823586319"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please provide the number of beds you want to book"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_6_1601823377929",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1601823377962",
+      "previous_sibling": "handler_6_1601823377962"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please provide the food type for booking hostel facility"
+              },
+              {
+                "text": "veg - Rs.80000/- per year"
+              },
+              {
+                "text": "non veg - Rs.90000/- per year"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          },
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "veg",
+                "value": {
+                  "input": {
+                    "text": "veg"
+                  }
+                }
+              },
+              {
+                "label": "non veg",
+                "value": {
+                  "input": {
+                    "text": "nonveg"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "slot_9_1601822481817",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1601822481962",
+      "previous_sibling": "handler_4_1601822481962"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1601822481817",
+      "context": {
+        "food": "@food"
+      },
+      "conditions": "@food",
+      "event_name": "input",
+      "dialog_node": "handler_4_1601822481962"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_6_1601823377929",
+      "context": {
+        "number": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_6_1601823377962"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_3_1601823586289",
+      "context": {
+        "payment": "@payment"
+      },
+      "conditions": "@payment",
+      "event_name": "input",
+      "dialog_node": "handler_9_1601823586319"
+    },
+    {
+      "type": "standard",
+      "title": "email",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "thank you for providing your email ID. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "context": {
+        "email": "@email.literal"
+      },
+      "conditions": "@email",
+      "dialog_node": "node_10_1601853502340"
+    },
+    {
+      "type": "frame",
+      "title": "book hostel facility",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "thank you, \nYour booking of $number $food hostel facility is placed. Please pay using $payment. Your receipt will be sent to $email ."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@book_hostel_bed || #book_hostel_facility",
+      "dialog_node": "node_3_1601822253984",
+      "previous_sibling": "node_8_1601817689500"
+    },
+    {
+      "type": "standard",
+      "title": "greetings",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#greetings || @greetings",
+      "dialog_node": "node_4_1601808556142",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "delete context",
+      "output": {
+        "deleted": "<?context.remove('food')?><?context.remove('number')?><?context.remove('email')?><?context.remove('payment')?>",
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1601822253984",
+      "conditions": "true",
+      "dialog_node": "node_5_1601825134638"
+    },
+    {
+      "type": "standard",
+      "title": "Enquiry",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#query || @Enquiry",
+      "dialog_node": "node_8_1601817689500",
+      "previous_sibling": "node_4_1601808556142"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Yes it has hostel facility"
+              },
+              {
+                "text": "The following is the menu"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          },
+          {
+            "source": "https://i.pinimg.com/originals/9e/d2/1b/9ed21b8f41264b111527e87d00cd6772.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_8_1601817689500",
+      "conditions": "@Enquiry:hostel &&  @Enquiry != \"charges\" && @book_hostel_bed != \"book\"",
+      "dialog_node": "response_10_1601821646435",
+      "previous_sibling": "response_8_1601818980507"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "good afternoon"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1601808556142",
+      "conditions": "@greetings:(good afternoon)",
+      "dialog_node": "response_2_1601808763487",
+      "previous_sibling": "response_9_1601808683748"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "good evening"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1601808556142",
+      "conditions": "@greetings:(good evening)",
+      "dialog_node": "response_3_1601808790204",
+      "previous_sibling": "response_2_1601808763487"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "The college is both NBA and NAAC accredited"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1601817689500",
+      "conditions": "@Enquiry:NAAC",
+      "dialog_node": "response_4_1601817849583"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "hi"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1601808556142",
+      "conditions": "anything_else",
+      "dialog_node": "response_6_1601808889842",
+      "previous_sibling": "response_3_1601808790204"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please provide the food type for booking hostel facility"
+              },
+              {
+                "text": "veg - Rs.80000/- per year"
+              },
+              {
+                "text": "non veg - Rs.90000/- per year"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          },
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "veg",
+                "value": {
+                  "input": {
+                    "text": "veg"
+                  }
+                }
+              },
+              {
+                "label": "non veg",
+                "value": {
+                  "input": {
+                    "text": "nonveg"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_8_1601817689500",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_3_1601822253984"
+      },
+      "conditions": "@book_hostel_bed || #book_hostel_facility",
+      "dialog_node": "response_7_1601824594404",
+      "previous_sibling": "response_4_1601817849583"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "veg - Rs.80000/-"
+              },
+              {
+                "text": "non veg - Rs.90000/-"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1601817689500",
+      "conditions": "@Enquiry:hostel && @Enquiry:charges",
+      "dialog_node": "response_8_1601818980507",
+      "previous_sibling": "response_7_1601824594404"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "good morning"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1601808556142",
+      "conditions": "@greetings:(good morning)",
+      "dialog_node": "response_9_1601808683748"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_3_1601822253984",
+      "variable": "$payment",
+      "dialog_node": "slot_3_1601823586289",
+      "previous_sibling": "slot_6_1601823377929"
+    },
+    {
+      "type": "slot",
+      "parent": "node_3_1601822253984",
+      "variable": "$number",
+      "dialog_node": "slot_6_1601823377929",
+      "previous_sibling": "slot_9_1601822481817"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_3_1601822253984",
+      "variable": "$food",
+      "dialog_node": "slot_9_1601822481817",
+      "previous_sibling": "handler_1_1601822480242"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. I am a college bot capable of responding to your query. Please provide your email ID."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "context": {},
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "i want to book hostel facility"
+    }
+  ],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "College chat bot",
+  "language": "en",
+  "description": "a chat bot to help in queries related to college"
+}
